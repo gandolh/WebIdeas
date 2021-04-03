@@ -35,15 +35,6 @@ body {
 	border-radius: 15%;
 }
 
-
-@media (max-aspect-ratio: 1/1) {
-  .card {
-    width:20vw ;
-    height:20vw;
-  }
-}
-
-
 .unsolved{
 	background-color: #0e153a !important;
 	animation-name: spin;
@@ -52,11 +43,28 @@ body {
     animation-timing-function: linear;
 }
 
+.consoleButtons{
+	display: flex;
+	justify-content: center;
+}
+.consoleButtons >*{
+	margin:10px;
+}
+.hidden{
+	display: none !important;
+}
 @keyframes spin {
     from {transform:rotateY(0deg);}
     to {transform:rotateY(360deg);}
 }
 
+
+@media (max-aspect-ratio: 1/1) {
+  .card {
+    width:20vw ;
+    height:20vw;
+  }
+}
 
 
 
