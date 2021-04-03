@@ -66,11 +66,14 @@ function setup() {
         })
         /* end of the main buttons console*/
         /* searching pairs*/
+        /*add a solved and unsolved class */
     for (let i = 1; i <= number_of_cards; i++) {
         cards[i - 1].addEventListener('click', () => {
-            if (gameIsOn == true) {
-                cards[i - 1].className += 'spinning';
+            if (gameIsOn == true && existCN(cards[i - 1], 'unsolved') != -1) {
+                cards[i - 1].className += 'spinning ';
+                console.log(cards[i - 1].className)
                 removeFromClassNameSO(cards[i - 1], 'unsolved') //single object
+                // console.log(cards[i - 1].className)
                 cards[i - 1].style.backgroundColor = colorByIndex[cards[i - 1].children[0].innerHTML];
                 if (lastPick.a == undefined) lastPick.a = cards[i - 1];
                 else if (lastPick.b == undefined) {
@@ -81,14 +84,13 @@ function setup() {
                         lastPick.a = undefined;
                         lastPick.b = undefined;
                     } else {
-                        setTimeout(() => {
-                            removeFromClassNameSO(lastPick.a, 'spinning');
-                            removeFromClassNameSO(lastPick.b, 'spinning');
-                        	lastPick.a.className += 'unsolved';
-                        	lastPick.b.className += 'unsolved';
-                        	lastPick.a = undefined;
-                        	lastPick.b = undefined;
-                        },1000)
+                        removeFromClassNameSO(lastPick.a, 'spinning');
+                        removeFromClassNameSO(lastPick.b, 'spinning');
+                        // console.log(cards[i - 1].className)
+                        lastPick.a.className += 'unsolved ';
+                        lastPick.b.className += 'unsolved ';
+                        lastPick.a = undefined;
+                        lastPick.b = undefined;
 
                     }
                 }
@@ -107,7 +109,7 @@ function removeFromClassName(parentObj, word) {
         lazy_list = c[i].className.split(' ');
         c[i].className = '';
         for (name of lazy_list)
-            if (name != word) c[i].className += name + ' ';
+            if (name != word && name!='') c[i].className += name + ' ';
     }
 }
 
@@ -115,5 +117,10 @@ function removeFromClassNameSO(simpleObj, word) {
     let lazy_list = simpleObj.className.split(' ');
     simpleObj.className = '';
     for (name of lazy_list)
-        if (name != word) simpleObj.className += name + ' ';
+        if (name != word && name!='') simpleObj.className += name + ' ';
+}
+
+
+function existCN(obj, word) {
+    return obj.className.indexOf(word)
 }
