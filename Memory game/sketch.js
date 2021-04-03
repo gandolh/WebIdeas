@@ -23,8 +23,8 @@ function setup() {
     let main_board = document.getElementsByClassName('main_board')[0];
     for (let i = 1; i <= number_of_cards; i++) {
         let card = document.createElement('div');
-        card.className = 'card';
-        main_board.appendChild(card)
+        card.className = 'card ';
+        main_board.appendChild(card)	
         let CardOrderNum = document.createElement('p');
         CardOrderNum.innerHTML = orderNumber[i];
         CardOrderNum.style.display = "none";
@@ -33,7 +33,11 @@ function setup() {
     }
     let cards = main_board.children;
     for (let i=1;i<=number_of_cards;i++) {
-    	console.log(cards[i-1].children[0].innerHTML)
         cards[i-1].style.backgroundColor = colorByIndex[cards[i-1].children[0].innerHTML];
     }
+    setTimeout(()=>{
+    	for(let card of cards){
+    		card.className+='unsolved'
+    	}
+    }, 1000);
 }
