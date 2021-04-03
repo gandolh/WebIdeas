@@ -1,3 +1,9 @@
+let gameIsOn = false;
+let lastPick = {
+    'a': undefined,
+    'b': undefined
+}
+
 function setup() {
     noCanvas();
     /* DECLARATIVE ZONE */
@@ -40,34 +46,74 @@ function setup() {
     for (let i = 1; i <= number_of_cards; i++) {
         cards[i - 1].style.backgroundColor = colorByIndex[cards[i - 1].children[0].innerHTML];
     }
-	/* 
-	end of generating the board
-	*/
-	/* 
-	starting the game
-	*/
+    /* 
+    end of generating the board
+    */
+    /* 
+    starting the game
+    */
     let play_button = document.getElementsByClassName('fa-play')[0];
     play_button.addEventListener('click', () => {
-        removeHiddenClass(document.getElementsByClassName('consoleButtons')[0]);
-        play_button.className += ' hidden';
-        for (let card of cards) {
-            card.className += 'unsolved'
-        }
-    })
-    /* end of the main buttons console*/
-    
+            gameIsOn = true;
+            removeFromClassName(document.getElementsByClassName('consoleButtons')[0], 'hidden');
+            play_button.className += ' hidden';
+            for (let card of cards) {
+                card.className += 'unsolved spinning';
+            }
+            setTimeout(() => {
+                removeFromClassName(main_board, 'spinning')
+            }, 1000);
+        })
+        /* end of the main buttons console*/
+        /* searching pairs*/
+    for (let i = 1; i <= number_of_cards; i++) {
+        cards[i - 1].addEventListener('click', () => {
+            if (gameIsOn == true) {
+                cards[i - 1].className += 'spinning';
+                removeFromClassNameSO(cards[i - 1], 'unsolved') //single object
+                cards[i - 1].style.backgroundColor = colorByIndex[cards[i - 1].children[0].innerHTML];
+                if (lastPick.a == undefined) lastPick.a = cards[i - 1];
+                else if (lastPick.b == undefined) {
+                    lastPick.b = cards[i - 1];
+                    aInnerValue = lastPick.a.children[0].innerHTML;
+                    bInnerValue = lastPick.b.children[0].innerHTML;
+                    if (aInnerValue == bInnerValue) {
+                        lastPick.a = undefined;
+                        lastPick.b = undefined;
+                    } else {
+                        setTimeout(() => {
+                            removeFromClassNameSO(lastPick.a, 'spinning');
+                            removeFromClassNameSO(lastPick.b, 'spinning');
+                        	lastPick.a.className += 'unsolved';
+                        	lastPick.b.className += 'unsolved';
+                        	lastPick.a = undefined;
+                        	lastPick.b = undefined;
+                        },1000)
+
+                    }
+                }
+            }
+        })
+    }
+
 }
 
 
 
-function removeHiddenClass(parentObj) {
+function removeFromClassName(parentObj, word) {
     let c = parentObj.children;
     let lazy_list;
     for (let i = 0; c[i] != undefined; i++) {
         lazy_list = c[i].className.split(' ');
         c[i].className = '';
         for (name of lazy_list)
-            if (name != 'hidden') c[i].className += name + ' ';
-        console.log(c[i].className)
+            if (name != word) c[i].className += name + ' ';
     }
+}
+
+function removeFromClassNameSO(simpleObj, word) {
+    let lazy_list = simpleObj.className.split(' ');
+    simpleObj.className = '';
+    for (name of lazy_list)
+        if (name != word) simpleObj.className += name + ' ';
 }

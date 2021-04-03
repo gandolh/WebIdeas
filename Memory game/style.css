@@ -28,72 +28,55 @@ body {
 	border-radius: 5%;
 }
 
-.card {	
-	width:16vh;
+.card {
+	width: 16vh;
 	height: 16vh;
 	border: 0;
 	border-radius: 15%;
 }
 
-.unsolved{
+.unsolved {
 	background-color: #0e153a !important;
-	animation-name: spin;
-    animation-duration: 1000ms;
-    animation-iteration-count: 1;
-    animation-timing-function: linear;
 }
 
-.consoleButtons{
+.spinning {
+	animation-name: spin;
+	animation-duration: 1000ms;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+}
+
+.consoleButtons {
 	display: flex;
 	justify-content: center;
 }
-.consoleButtons >*{
-	margin:10px;
+
+.consoleButtons >* {
+	margin: 10px;
 }
-.hidden{
+
+.hidden {
 	display: none !important;
 }
+
 @keyframes spin {
-    from {transform:rotateY(0deg);}
-    to {transform:rotateY(360deg);}
+	from {
+		transform: rotateY(0deg);
+	}
+
+	to {
+		transform: rotateY(360deg);
+	}
+
 }
 
+@media (max-aspect-ratio:1/1) {
+	.card {
+		width: 20vw;
+		height: 20vw;
+	}
 
-@media (max-aspect-ratio: 1/1) {
-  .card {
-    width:20vw ;
-    height:20vw;
-  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 blue palette:
