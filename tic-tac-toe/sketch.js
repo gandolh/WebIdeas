@@ -3,8 +3,25 @@ let cards = main_board.children;
 let shape_bit = 4;
 if (window.innerWidth / window.innerHeight < 1) shape_bit = 12;
 let player1 = true;
-let gameIsOn;
-let positions_ocuppied=0;
+let gameIsOn = true;
+let positions_ocuppied = 0;
+let bot;
+speed_up = 5;
+let game_option = document.getElementsByClassName('option');
+game_option[0].addEventListener('click', () => { // for 2 players
+    bot = false;
+    document.getElementsByClassName('first_question')[0].style.display = 'none';
+    document.getElementsByClassName('playMode')[0].style.display = 'none';
+    main_board.style.display = 'grid';
+})
+game_option[1].addEventListener('click', () => { // for 2 players
+    bot = true;
+    document.getElementsByClassName('first_question')[0].style.display = 'none';
+    document.getElementsByClassName('playMode')[0].style.display = 'none';
+    main_board.style.display = 'grid';
+})
+
+
 for (let card of cards) {
     card.addEventListener('click', () => {
         if (gameIsOn) {
@@ -21,17 +38,26 @@ for (let card of cards) {
         gameIsOn = !checkFinish();
         if (gameIsOn == false) {
             setTimeout(() => {
-                main_board.style.display = 'none';
+                main_board.style.opacity = '0.2';
                 let winning_message = document.createElement('h1');
-                if(positions_ocuppied==10)winning_message.innerHTML = `draw..`;
+                if (positions_ocuppied == 10) winning_message.innerHTML = `draw..`;
                 else winning_message.innerHTML = `Player ${player1?2:1} won!`;
                 winning_message.className = 'winning_message';
                 document.getElementsByClassName('container')[0].appendChild(winning_message)
 
-            }, 2000)
+            }, 100)
+        }
+        if (bot == true && gameIsOn && player1 == false) {
+            let number = Math.floor(Math.random() * 9);
+            while (cards[number].children[0] != undefined)
+                number = Math.floor(Math.random() * 9)
+            cards[number].click();
         }
     })
 }
+
+
+
 
 
 function drawX(obj) {
@@ -56,12 +82,16 @@ function drawX(obj) {
             sketch.fill(0)
         }
         sketch.draw = () => {
-            if (i <= middlePoint.x + canvas1.width / 4) {
-                sketch.ellipse(i, j, shape_bit, shape_bit);
-                sketch.ellipse(canvas1.width - i, j, shape_bit, shape_bit);
-                i += shape_bit / 4;
-                j -= shape_bit / 4;
-            } else sketch.noLoop();
+        	for(let k=0;k<=speed_up;k++){
+
+                if (i <= middlePoint.x + canvas1.width / 4) {
+                    sketch.ellipse(i, j, shape_bit, shape_bit);
+                    sketch.ellipse(canvas1.width - i, j, shape_bit, shape_bit);
+                    i += shape_bit / 4;
+                    j -= shape_bit / 4;
+                } else sketch.noLoop();
+        	}
+
         }
     };
     new p5(instance);
@@ -89,12 +119,14 @@ function drawO(obj) {
             angle = 0;
         }
         sketch.draw = () => {
-            if (angle <= sketch.TWO_PI) {
-                let x = middlePoint.x + radius * sketch.cos(angle)
-                let y = middlePoint.y + radius * sketch.sin(angle)
-                sketch.ellipse(x, y, shape_bit, shape_bit);
-                angle += shape_bit / 200;
-            } else sketch.noLoop();
+            for (let i = 0; i <= speed_up; i++) {
+                if (angle <= sketch.TWO_PI) {
+                    let x = middlePoint.x + radius * sketch.cos(angle)
+                    let y = middlePoint.y + radius * sketch.sin(angle)
+                    sketch.ellipse(x, y, shape_bit, shape_bit);
+                    angle += shape_bit / 200;
+                } else sketch.noLoop();
+            }
         }
     };
     new p5(instance);
@@ -116,6 +148,9 @@ function checkFinish() {
         return true;
     if (values[2] == values[4] && values[4] == values[6] && values[2] != undefined)
         return true;
-	if(positions_ocuppied==9){positions_ocuppied++; return true;} //draw
+    if (positions_ocuppied == 9) {
+        positions_ocuppied++;
+        return true;
+    } //draw
     return false;
 }
