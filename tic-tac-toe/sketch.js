@@ -4,6 +4,7 @@ let shape_bit = 4;
 if (window.innerWidth / window.innerHeight < 1) shape_bit = 12;
 let player1 = true;
 let gameIsOn;
+let positions_ocuppied=0;
 for (let card of cards) {
     card.addEventListener('click', () => {
         if (gameIsOn) {
@@ -11,6 +12,7 @@ for (let card of cards) {
                 if (player1) drawX(card);
                 else drawO(card);
                 player1 = !player1;
+                positions_ocuppied++;
             }
         }
         //if player1==false then he won
@@ -21,11 +23,12 @@ for (let card of cards) {
             setTimeout(() => {
                 main_board.style.display = 'none';
                 let winning_message = document.createElement('h1');
-                winning_message.innerHTML = `Player ${player1?2:1} won!`;
+                if(positions_ocuppied==10)winning_message.innerHTML = `draw..`;
+                else winning_message.innerHTML = `Player ${player1?2:1} won!`;
                 winning_message.className = 'winning_message';
                 document.getElementsByClassName('container')[0].appendChild(winning_message)
 
-            }, 3000)
+            }, 2000)
         }
     })
 }
@@ -113,5 +116,6 @@ function checkFinish() {
         return true;
     if (values[2] == values[4] && values[4] == values[6] && values[2] != undefined)
         return true;
+	if(positions_ocuppied==9){positions_ocuppied++; return true;} //draw
     return false;
 }
