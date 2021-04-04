@@ -54,7 +54,10 @@ body {
 }
 
 }
-
+.winning_message{
+	color: #83e85a;
+	font-size: 4em;
+}
 /*
 palette:
 #107a8b
