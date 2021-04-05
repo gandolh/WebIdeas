@@ -1,5 +1,4 @@
 /* inspiration desmos calculator*/
-
 let history = document.getElementsByClassName('calculusHistory')[0];
 let inputBody = document.getElementsByClassName('inputBody')[0];
 inputBody.children[0].select();
@@ -11,6 +10,8 @@ function addToHistory(node) {
         key
     }) => {
         if (key === "Enter") {
+            let equation = history.lastElementChild.children[0].value;
+            history.lastElementChild.children[1].innerHTML = '= ' + math.evaluate(equation);
             newInputBody = createNewInputBody();
             history.appendChild(newInputBody)
             last_input = history.lastElementChild.children[0];
