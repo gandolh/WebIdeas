@@ -30,6 +30,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
+	overflow: hidden;
 }
 
 .inputBody {
@@ -57,4 +58,8 @@ body {
 .calculusButtons {
 	width: 100%;
 	height: 40%;
+}
+
+.fa-exclamation-triangle{
+	color: #3d5af1;
 }
