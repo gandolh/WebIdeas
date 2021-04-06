@@ -2,6 +2,10 @@
 let history = document.getElementsByClassName('calculusHistory')[0];
 let inputBody = document.getElementsByClassName('inputBody')[0];
 let final_result;
+
+
+
+
 inputBody.children[0].select();
 // history.children[0].style.backgroundColor='red';
 addToHistory(inputBody.children[0])
@@ -15,7 +19,9 @@ function addToHistory(node) {
             //post it to history
             evaluateInput();
             if (final_result != undefined) {
-                history.lastElementChild.children[1].innerHTML = '= ' + final_result;
+                if (final_result > 9999999)
+                    history.lastElementChild.children[1].innerHTML = '=' + expo(final_result, 2);
+                else history.lastElementChild.children[1].innerHTML = '=' + math.round(final_result, 3);
                 history.lastElementChild.children[0].readOnly = true;
                 newInputBody = createNewInputBody();
                 history.appendChild(newInputBody)
@@ -59,7 +65,13 @@ function evaluateInput() {
     let equation = history.lastElementChild.children[0].value;
     if (validInput(equation)) {
         final_result = math.evaluate(equation);
-        history.lastElementChild.children[1].innerHTML = '=' + final_result;
+        if (final_result != undefined) {
+            if (final_result > 9999999)
+                history.lastElementChild.children[1].innerHTML = '=' + expo(final_result, 2);
+            else history.lastElementChild.children[1].innerHTML = '=' + math.round(final_result, 3);
+        } else {
+            history.lastElementChild.children[1].innerHTML = '';
+        }
     } else {
         final_result = undefined;
         if (history.lastElementChild.children[1].children[0] == undefined) {
@@ -69,4 +81,9 @@ function evaluateInput() {
             history.lastElementChild.children[1].appendChild(warning_icon);
         }
     }
+}
+
+function expo(x, f) {
+    return Number.parseFloat(x).toExponential(f); //proudly got from Mozilla MDN
+    //love ya mozilla guys <3 
 }
