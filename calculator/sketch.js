@@ -6,6 +6,7 @@ inputBody.children[0].select();
 // history.children[0].style.backgroundColor='red';
 addToHistory(inputBody.children[0])
 evaluateOnModify(inputBody.children[0])
+
 function addToHistory(node) {
     node.addEventListener("keyup", ({
         key
@@ -15,10 +16,11 @@ function addToHistory(node) {
             evaluateInput();
             if (final_result != undefined) {
                 history.lastElementChild.children[1].innerHTML = '= ' + final_result;
+                history.lastElementChild.children[0].readOnly = true;
                 newInputBody = createNewInputBody();
                 history.appendChild(newInputBody)
                 last_input = history.lastElementChild.children[0];
-                last_input.select();
+                last_input.focus();
                 evaluateOnModify(newInputBody)
                 addToHistory(last_input);
             }
@@ -26,11 +28,13 @@ function addToHistory(node) {
         }
     })
 }
-function evaluateOnModify(node){
-    node.addEventListener('input',(event)=>{
+
+function evaluateOnModify(node) {
+    node.addEventListener('input', (event) => {
         evaluateInput();
     })
 }
+
 function createNewInputBody() {
     let newInputBody = document.createElement('div');
     let newInput = document.createElement('input');
@@ -54,16 +58,15 @@ function validInput(equation) {
 function evaluateInput() {
     let equation = history.lastElementChild.children[0].value;
     if (validInput(equation)) {
-        final_result=math.evaluate(equation);
-        history.lastElementChild.children[1].innerHTML = '= ' + final_result;
+        final_result = math.evaluate(equation);
+        history.lastElementChild.children[1].innerHTML = '=' + final_result;
     } else {
-        final_result=undefined;
+        final_result = undefined;
         if (history.lastElementChild.children[1].children[0] == undefined) {
             history.lastElementChild.children[1].innerHTML = '';
             let warning_icon = document.createElement('i');
             warning_icon.className = 'fas fa-exclamation-triangle';
             history.lastElementChild.children[1].appendChild(warning_icon);
         }
-
     }
 }
