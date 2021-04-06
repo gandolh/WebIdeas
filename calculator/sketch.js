@@ -21,7 +21,8 @@ function addToHistory(node) {
             if (final_result != undefined) {
                 if (final_result > 9999999)
                     history.lastElementChild.children[1].innerHTML = '=' + expo(final_result, 2);
-                else history.lastElementChild.children[1].innerHTML = '=' + math.round(final_result, 3);
+                else if (final_result < 1 / 999999) history.lastElementChild.children[1].innerHTML = '=' + expo(final_result, 2);
+                else history.lastElementChild.children[1].innerHTML = '=' + math.round(final_result, 7);
                 history.lastElementChild.children[0].readOnly = true;
                 newInputBody = createNewInputBody();
                 history.appendChild(newInputBody)
@@ -68,7 +69,8 @@ function evaluateInput() {
         if (final_result != undefined) {
             if (final_result > 9999999)
                 history.lastElementChild.children[1].innerHTML = '=' + expo(final_result, 2);
-            else history.lastElementChild.children[1].innerHTML = '=' + math.round(final_result, 3);
+            else if (final_result < 1 / 999999) history.lastElementChild.children[1].innerHTML = '=' + expo(final_result, 2);
+            else history.lastElementChild.children[1].innerHTML = '=' + math.round(final_result, 7);    
         } else {
             history.lastElementChild.children[1].innerHTML = '';
         }
