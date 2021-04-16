@@ -7,7 +7,8 @@ let finished = false;
 let playable = false;
 let cooldown = 5,
     cooldown_value = 5;
-
+let mouse_compatibility = false; // check for big movements
+// of last  click positions with mobile devices
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -84,6 +85,12 @@ function draw() {
             }
         }
     }
+
+    if (mouseIsPressed) {
+        mouse_compatibility = true;
+    } else {
+        mouse_compatibility = false;
+    }
 }
 
 function removeWalls(a, b) {
@@ -106,37 +113,40 @@ function removeWalls(a, b) {
 }
 
 function touchMoved(event) {
-    x_modify = pmouseX - mouseX;
-    y_modify = pmouseY - mouseY;
-    error_handle = 5;
-    if (cooldown > cooldown_value) {
-        if (x_modify > error_handle) { //left
-            let ind = index(curent.i - 1, curent.j, cols)
-            if (ind != -1 && curent.walls[3] == false) curent = grid[ind]
-            cooldown = 0;
-            // console.log('a')
+    if (mouse_compatibility == true) {
+        x_modify = pmouseX - mouseX;
+        y_modify = pmouseY - mouseY;
+        error_handle = 5;
+        if (cooldown > cooldown_value) {
+            if (x_modify > error_handle) { //left
+                let ind = index(curent.i - 1, curent.j, cols)
+                if (ind != -1 && curent.walls[3] == false) curent = grid[ind]
+                cooldown = 0;
+                // console.log('a')
 
-        }
-        if (x_modify < -error_handle) { //right
-            let ind = index(curent.i + 1, curent.j, cols)
-            if (ind != -1 && curent.walls[1] == false) curent = grid[ind]
-            cooldown = 0;
-            // console.log('d')
+            }
+            if (x_modify < -error_handle) { //right
+                let ind = index(curent.i + 1, curent.j, cols)
+                if (ind != -1 && curent.walls[1] == false) curent = grid[ind]
+                cooldown = 0;
+                // console.log('d')
 
-        }
-        if (y_modify > error_handle) { //up
-            let ind = index(curent.i, curent.j - 1, cols)
-            if (ind != -1 && curent.walls[0] == false) curent = grid[ind]
-            cooldown = 0;
-            // console.log('s')
+            }
+            if (y_modify > error_handle) { //up
+                let ind = index(curent.i, curent.j - 1, cols)
+                if (ind != -1 && curent.walls[0] == false) curent = grid[ind]
+                cooldown = 0;
+                // console.log('s')
 
-        }
-        if (y_modify < -error_handle) { //down
-            let ind = index(curent.i, curent.j + 1, cols)
-            if (ind != -1 && curent.walls[2] == false) curent = grid[ind]
-            cooldown = 0;
-            // console.log('w')
+            }
+            if (y_modify < -error_handle) { //down
+                let ind = index(curent.i, curent.j + 1, cols)
+                if (ind != -1 && curent.walls[2] == false) curent = grid[ind]
+                cooldown = 0;
+                // console.log('w')
 
+            }
         }
+
     }
 }
