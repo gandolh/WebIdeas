@@ -1,6 +1,6 @@
-let  floorColor='#fff4e3';
-let wallColor='#002651';
-let stroke_w=3;
+let floorColor = '#fff4e3';
+let wallColor = '#002651';
+let stroke_w = 3;
 class Cell {
     constructor(i, j, w) {
         this.i = i;
@@ -47,7 +47,7 @@ class Cell {
         }
 
         if (neighbors.length > 0) {
-            let r = floor(random(0, neighbors.length ));
+            let r = floor(random(0, neighbors.length));
             return neighbors[r];
         } else return undefined;
     }
@@ -57,6 +57,13 @@ class Cell {
         let y = this.j * this.w;
         noStroke();
         fill(0, 255, 0, 120)
+        rect(x, y, this.w, this.w)
+    }
+    MarkAsFinishLine() {
+        let x = this.i * this.w;
+        let y = this.j * this.w;
+        noStroke();
+        fill('#fc5185')
         rect(x, y, this.w, this.w)
     }
 }
