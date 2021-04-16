@@ -11,7 +11,7 @@ let mouse_compatibility = false; // check for big movements
 // of last  click positions with mobile devices
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(window.innerWidth, window.innerHeight);
     cols = int(width / w);
     rows = int(height / w);
     for (let j = 0; j <= rows; j++)
