@@ -71,5 +71,5 @@ class Cell {
 function index(i, j, cols) {
     if (i < 0 || j < 0 || i > cols || j > rows)
         return -1;
-    return i + j * (cols + 1);
+    return i + j * (cols );
 }

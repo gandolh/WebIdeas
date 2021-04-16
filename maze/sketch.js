@@ -36,6 +36,7 @@ function setup() {
 
 function draw() {
     if (go) {
+    	translate((width-w*cols )/2, (height- w*(rows+1))/2)
         generate_maze();
     }
 }
@@ -177,8 +178,8 @@ function generate_maze() {
 
 
 function initializeGrid() {
-    cols = int(width / w);
-    rows = int(height / w);
+    cols = int(width / w ) -1;
+    rows = int(height / w ) -1;
     for (let j = 0; j <= rows; j++)
         for (let i = 0; i <= cols; i++) {
             grid.push(new Cell(i, j, w));
