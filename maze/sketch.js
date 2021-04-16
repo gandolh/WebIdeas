@@ -12,22 +12,24 @@ let mouse_compatibility = false; // check for big movements
 
 let goal; //the finish line 
 let go = false;
+let score = 0;
 let settings = document.getElementsByClassName('settings')[0];
 let div_maze = document.getElementsByClassName('maze')[0];
 let sq_size_input = document.getElementById('sq_size');
 let go_button = document.getElementById('go_button');
-
+let score_div= document.getElementById('score');
+score_div.innerHTML=score;
 
 function setup() {
     cnv = createCanvas(windowWidth, windowHeight);
     cnv.parent(div_maze)
     div_maze.style.display = 'none';
     go_button.addEventListener('click', () => {
-        w = int ((sq_size_input.value || sq_size_input.placeholder));
+        w = int((sq_size_input.value || sq_size_input.placeholder));
         settings.style.display = 'none';
         div_maze.style.display = 'block';
         initializeGrid();
-        go=true;
+        go = true;
 
 
     })
@@ -36,7 +38,7 @@ function setup() {
 
 function draw() {
     if (go) {
-    	translate((width-w*cols )/2, (height- w*(rows+1))/2)
+        translate((width - w * cols) / 2, (height - w * (rows + 1)) / 2)
         generate_maze();
     }
 }
@@ -138,8 +140,9 @@ function generate_maze() {
         }
         cooldown++;
         if (goal == player) {
-            noLoop();
-            goal.highlight();
+            score++;
+            goal = grid[Math.floor(random(grid.length - 1))];
+            score_div.innerHTML=score;
         }
     } else { //if it is generating
         if (finished == true) { //if generation is done draw it
@@ -178,13 +181,13 @@ function generate_maze() {
 
 
 function initializeGrid() {
-    cols = int(width / w ) -1;
-    rows = int(height / w ) -1;
+    cols = int(width / w) - 1;
+    rows = int(height / w) - 1;
     for (let j = 0; j <= rows; j++)
         for (let i = 0; i <= cols; i++) {
             grid.push(new Cell(i, j, w));
         }
     curent = grid[0];
-    goal = grid[grid.length - 1];
+    goal = grid[Math.floor(random(grid.length - 1))];
 
 }

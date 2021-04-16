@@ -49,3 +49,20 @@ canvas {
 .maze{
 	display: none;
 }
+
+#score{
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translate(-50%,0);
+	background-color: rgba(0,0,0,0.5);
+	color: #eeeeee;
+	padding: 0.75rem 4rem;
+	font-size: 1.25rem;
+}
+
+
+
+
+
+
