@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 class Navbar extends Component {
   render() {
+    console.log("navbar rendered");
     return (
       <nav className="navbar navbar-light bg-light">
         <a className="navbar-brand" href="#">

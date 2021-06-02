@@ -4,8 +4,15 @@ class Counter extends Component {
   //   super();
   //   this.handleIncrement = this.handleIncrement.bind(this);
   // }
-
+  componentDidUpdate(prevProps, prevState) {
+    // console.log("prevProps", prevProps);
+    // console.log("prevState", prevState);
+  }
+  componentWillUnmount() {
+    console.log("Counter unmount");
+  }
   render() {
+    console.log("counter rendered");
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
