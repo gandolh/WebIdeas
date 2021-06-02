@@ -8,19 +8,24 @@ class App extends Component {
   state = {
     counters: [
       { id: 1, value: 4 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 0 },
+      { id: 2, value: 1 },
+      { id: 3, value: 1 },
+      { id: 4, value: 1 },
     ],
   };
   constructor(){
     super();
-    console.log('app constructor');
+    // console.log('app constructor');
   }
   componentDidMount(){
-    console.log('app mounted')
+    // console.log('app mounted')
   }
+  handleUpdate(counters){
+    
+    counters= counters.filter((el)=>el.value>0)
+    this.setState({ counters });
 
+  }
   handleIncrement = (counter) => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
@@ -39,11 +44,29 @@ class App extends Component {
       c.value = 0;
       return c;
     });
-    this.setState({ counters: counters });
+   this.handleUpdate(counters)
   };
-
+  handleDecrement =(counter)=>{
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    if(counters[index].value>0)counters[index].value--;
+    this.handleUpdate(counters)
+  }
+  handleAdd = () =>{
+    // console.log(this.state.counters)
+    const counters = [...this.state.counters];
+    if(counters.length>0)
+    counters.push({id: counters[counters.length-1].id+1,
+    value: 1
+  })
+  else counters.push({id:1,
+    value:1})
+    this.setState({counters});
+    // console.log(this.state.counters,counters);
+  }
   render(){
-    console.log('app rendered')
+    // console.log('app rendered')
     return (
       <React.Fragment>
   
@@ -53,7 +76,9 @@ class App extends Component {
       <Counters 
       counters = {this.state.counters}
       onReset={this.handleReset}
+      onAdd = {this.handleAdd}
       onIncrement= {this.handleIncrement}
+      onDecrement={this.handleDecrement}
       onDelete= {this.handleDelete}/>
       </main>
       </React.Fragment>

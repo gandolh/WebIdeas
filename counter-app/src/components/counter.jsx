@@ -9,10 +9,10 @@ class Counter extends Component {
     // console.log("prevState", prevState);
   }
   componentWillUnmount() {
-    console.log("Counter unmount");
+    // console.log("Counter unmount");
   }
   render() {
-    console.log("counter rendered");
+    // console.log("counter rendered");
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
@@ -23,6 +23,14 @@ class Counter extends Component {
           className="btn btn-secondary btn-sm"
         >
           Increment
+        </button>
+        <button
+          onClick={() => {
+            this.props.onDecrement(this.props.counter);
+          }}
+          className="btn btn-secondary btn-sm m-2"
+        >
+          Decrement
         </button>
         <button
           onClick={() => this.props.onDelete(this.props.counter.id)}
