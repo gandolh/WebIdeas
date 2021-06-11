@@ -1,0 +1,70 @@
+[33mcommit fabf557bd165cee3e5ae180d8f739876aa03be6b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Fri Jun 11 10:09:07 2021 +0300
+
+     github pages publishde
+
+[33mcommit c68ffbc2de7c29d7db82c0008a98af12efda3746[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Fri Jun 11 09:54:41 2021 +0300
+
+    Added build file
+
+[33mcommit 293886bf70e3fe898debb98205b571e814cfff67[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Thu Jun 10 15:11:31 2021 +0300
+
+    last version
+    routing added
+    json server fully functional
+    and idk front end done
+
+[33mcommit 8bc0949cb5b36b4e6839d95e6dd4fe6043290c58[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Thu Jun 10 14:19:37 2021 +0300
+
+    functional json-server with backend
+    kinda simplistic but i like it
+
+[33mcommit b940fe6499c184d35bcce50557849a07b59c0140[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Thu Jun 10 13:31:15 2021 +0300
+
+    just the functional react-app (front end)
+    adding soon a json-server
+
+[33mcommit 28c305d6b4ff118ac9b8b69bea3e84245c88de0e[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Tue Jun 8 23:16:47 2021 +0300
+
+     functional api call
+
+[33mcommit 69238697c19a19725cffb73285ccd46959e4af8b[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Wed Jun 2 23:01:48 2021 +0300
+
+    decrement button and add new counter
+
+[33mcommit a21ec0a16225efaf370ea1538ad512b33601298a[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Wed Jun 2 21:48:02 2021 +0300
+
+    so i added some lifecycle hooks study
+
+[33mcommit 1ca0a87e3d826b02498f187ab03b0b2d5b23ebb8[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Sun May 30 20:00:05 2021 +0300
+
+    nearly finished
+
+[33mcommit d74c96213cb315f596904c5e1765b8834738c0dd[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Sun May 30 18:42:09 2021 +0300
+
+    working on it
+
+[33mcommit 80cea4e6b9dcdcb5ec9e058b8f38302feb74011c[m
+Author: gandolh <gusatualex@yahoo.com>
+Date:   Sun May 30 17:13:45 2021 +0300
+
+    some progress
