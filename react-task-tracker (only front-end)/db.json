@@ -7,16 +7,16 @@
       "reminder": true
     },
     {
+      "id": 2,
+      "text": "Meeting at School",
+      "day": "Feb 6th at 1:30pm",
+      "reminder": false
+    },
+    {
       "text": "Take test",
       "day": "Monday",
       "reminder": false,
       "id": 3
-    },
-    {
-      "text": "Go to School",
-      "day": "Feb 6th at 3:30am",
-      "reminder": false,
-      "id": 4
     }
   ]
 }
