@@ -17,10 +17,10 @@ const App = () => {
   return (
       <Router>
     <div className="container">
+        <NavBar navlinks={NavLinks}/>
         <Route path="/" exact component={ (props)=>{
            return ( 
                <>
-           <NavBar navlinks={NavLinks}/>
             <Banner />
             <BlogCategories />
             <Posts />

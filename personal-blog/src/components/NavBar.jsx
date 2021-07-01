@@ -21,7 +21,7 @@ const NavBar = (props) => {
           </Link>
         ))}
       </div>
-      <a href="#">Subscribe</a>
+      <a href="https://www.instagram.com/random_casualtiess/" className="follow" >Follow</a>
     </div>
   );
 };

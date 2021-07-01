@@ -3,7 +3,7 @@
   height: 4.5rem;
   /* background-color: #ffffff; */
   background-color: #ffffff;
-    align-items:center;
+    align-items:center; 
     padding:10px;
     justify-content: space-between;
     position:sticky;
@@ -25,4 +25,13 @@ a {
 }
 .linkMenu a{
     padding-left:25px;
+}
+
+
+.follow{
+  background-color: #3197d6;
+  color:#ffffff;
+  font-weight: 700;
+  padding:5px 15px;
+  border-radius:25px;
 }
