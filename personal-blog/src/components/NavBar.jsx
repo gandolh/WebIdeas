@@ -16,6 +16,7 @@ const NavBar = (props) => {
             to={link.anchor}
             className={link.active ? "active" : ""}
             key={link.id}
+            onClick={()=>{props.onChangeActive(link.id)}}
           >
             {link.name}
           </Link>
