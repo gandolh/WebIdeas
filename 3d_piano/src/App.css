@@ -1,0 +1,8 @@
+.container{
+  margin:  0px 5rem;
+  width: calc(100% - 10rem)
+}
+
+.active{
+  color:#495864;
+}

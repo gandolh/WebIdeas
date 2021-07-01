@@ -1,0 +1,28 @@
+.navbar {
+  display: flex;
+  height: 4.5rem;
+  /* background-color: #ffffff; */
+  background-color: #ffffff;
+    align-items:center;
+    padding:10px;
+    justify-content: space-between;
+    position:sticky;
+    top:0;
+}
+
+a {
+  text-decoration: none;
+  color:#bac3cb;
+}
+.logo {
+  height: 100%;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.linkMenu{
+    margin-left:-25px;
+}
+.linkMenu a{
+    padding-left:25px;
+}
