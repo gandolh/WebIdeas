@@ -1,7 +1,14 @@
 import React from 'react';
+import './Banner.css'
 const Banner = () => {
-    return ( <div style={{backgroundColor:'#6bdaed',width:'100%',height:'200px'}}>
-
+    return ( <div className="banner">
+        <div></div>
+        <div className="bannerText">
+        <p className="welcome">Welcome to</p>
+        <h1 className="mainTitle">Random Casualtiess Blog</h1>
+        </div>
+        <img src="imgs/hello.svg" className="ilustration" alt="hello"></img>
+        <div></div>
     </div> );
 }
  

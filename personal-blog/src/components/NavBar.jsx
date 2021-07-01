@@ -8,7 +8,7 @@ const NavBar = (props) => {
     <div className="navbar">
       <div
         className="logo"
-        style={{ backgroundImage: "url('./logo192.png')" }}
+        style={{ backgroundImage: "url('./imgs/fox.png')" }}
       ></div>
       <div className="linkMenu">
         {props.navlinks.map((link) => (
