@@ -1,7 +1,7 @@
 import React from "react";
 import "./BlogCategories.css";
 const BlogCategories = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="blogCategories">
       {props.blogCateg.map((category) => (
@@ -14,10 +14,7 @@ const BlogCategories = (props) => {
           {category.name}
         </div>
       ))}
-      {/* <div className="tab active">Most recent</div>
-    <div className="tab">Popular</div>
-    <div className="tab">Animations</div>
-    <div className="tab">Piece of my life</div> */}
+
     </div>
   );
 };
