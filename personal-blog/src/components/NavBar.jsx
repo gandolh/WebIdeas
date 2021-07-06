@@ -5,8 +5,12 @@ import "./NavBar.css";
 const NavBar = (props) => {
   // console.log(props)
   const [clicked, setClicked] = useState(false);
+  const getNavBarClassName = ()=>{
+    if(clicked)return "navbar responsive";
+     return "navbar";
+  }
   return (
-    <div className={`navbar ${clicked && "responsive"}`}>
+    <div className={getNavBarClassName()}>
       <div
         className="logo"
         style={{ backgroundImage: "url('./imgs/fox.png')" }}

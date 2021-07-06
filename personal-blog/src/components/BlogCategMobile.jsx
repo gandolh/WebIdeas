@@ -12,7 +12,12 @@ const BlogCategMobile = (props) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows:true,
+    afterChange : async (ind)=>{
+      props.onChangeActiveCategory(ind+1);
+    },
+    initialSlide: props.blogCateg.find(el => el.active===true).id -1
   };
+
   return (
     <Slider {...settings}>
       {props.blogCateg.map((category) => (

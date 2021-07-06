@@ -80,7 +80,10 @@ const App = () => {
                     onChangeActiveCategory={changeActiveCategory}
                   />
                 ) : (
-                  <BlogCategMobile blogCateg={blogCateg} />
+                  <BlogCategMobile
+                    blogCateg={blogCateg}
+                    onChangeActiveCategory={changeActiveCategory}
+                  />
                 )}
                 <Posts articles={articles} />
               </>
