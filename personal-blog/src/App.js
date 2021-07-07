@@ -2,10 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import Banner from "./components/Banner";
-import BlogCategories from "./components/BlogCategories";
-import BlogCategMobile from "./components/BlogCategMobile";
-import Posts from "./components/Posts";
+import Home from "./components/Home";
+import Projects from "./components/Projects/Projects";
 import "./App.css";
 import "./Responsive.css";
 const App = () => {
@@ -40,15 +38,6 @@ const App = () => {
   };
   //end here
 
-  const [width, setWidth] = useState(window.innerWidth);
-
-  React.useEffect(() => {
-    function handleResize() {
-      setWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", handleResize);
-  });
-
   const changeActive = (id) => {
     let navLinksCopy = NavLinks.map((link) =>
       id === link.id ? { ...link, active: true } : { ...link, active: false }
@@ -61,7 +50,7 @@ const App = () => {
     );
     setBlogCateg(blogCategCopy);
   };
-  const breakpoint = 750;
+
   return (
     <Router>
       <div className="container">
@@ -69,27 +58,15 @@ const App = () => {
         <Route
           path="/"
           exact
-          component={(props) => {
-            return (
-              <>
-                <Banner />
-
-                {width > breakpoint ? (
-                  <BlogCategories
-                    blogCateg={blogCateg}
-                    onChangeActiveCategory={changeActiveCategory}
-                  />
-                ) : (
-                  <BlogCategMobile
-                    blogCateg={blogCateg}
-                    onChangeActiveCategory={changeActiveCategory}
-                  />
-                )}
-                <Posts articles={articles} />
-              </>
-            );
-          }}
+          component={(props) => (
+            <Home
+              blogCateg={blogCateg}
+              onChangeActiveCategory={changeActiveCategory}
+              articles={articles}
+            />
+          )}
         />
+        <Route path="/projects" exact component={() => <Projects />} />
       </div>
     </Router>
   );
