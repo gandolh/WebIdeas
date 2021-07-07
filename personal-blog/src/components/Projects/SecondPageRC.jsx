@@ -21,7 +21,7 @@ const SecondPageRC = () => {
     );
   return (
     <>
-      <Swiper navigation={true} className="mySwiper" loop={true}>
+      <Swiper navigation={true} className="SwiperRC" loop={true}>
         {swiperNamesImgs}
       </Swiper>
     </>

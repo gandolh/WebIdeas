@@ -69,3 +69,6 @@
     object-fit: cover;
   }
   
+  .SwiperRC{
+    height: calc(100vh - 4.5rem - 20px);
+  }
