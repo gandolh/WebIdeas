@@ -7,7 +7,6 @@ const RandomCasualtiess = () => {
     <div className="containerRandomCas">
       <FirstPageRC/>
       <SecondPageRC/>
-      {/* <p>scroll down</p> */}
     </div>
   );
 };

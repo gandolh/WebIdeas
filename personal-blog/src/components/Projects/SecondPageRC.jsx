@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -15,7 +15,7 @@ const SecondPageRC = () => {
   const swiperNamesImgs = [];
   for (let i = 1; i < 7; i++)
     swiperNamesImgs.push(
-      <SwiperSlide>
+      <SwiperSlide key={i}>
         <img src={`./imgs/swiper_${i}.jpg`} alt="swiper_img"/>
       </SwiperSlide>
     );
