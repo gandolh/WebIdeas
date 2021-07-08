@@ -1,7 +1,7 @@
 import React from "react";
 import FirstPageRC from "./FirstPageRC";
 import SecondPageRC from "./SecondPageRC";
-import './RandomCasualtiess.css';
+import './Projects.css';
 const RandomCasualtiess = () => {
   return (
     <div className="containerRandomCas">
