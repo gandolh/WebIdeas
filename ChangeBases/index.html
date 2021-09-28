@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schimbare baze</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="card" id="mainOne">
+        <div class="card-body innerMainone" >
+            <div class="form-group mt-2">
+                <label for="nrTransform">numarul de transformat</label>
+                <input type="text" class="form-control" id="nrTransform_input" placeholder="">
+              </div>
+            <div class="form-group mt-2">
+                <label for="fromBase">de la baza:</label>
+                <input type="number" class="form-control" id="fromBase_input" placeholder="">
+              </div>
+              <div class="form-group mt-2">
+                <label for="toBase">in baza:</label>
+                <input type="number" class="form-control" id="toBase_input" placeholder="">
+              </div>
+     
+              <button type="button" class="btn btn-success mt-3" id="Calculeaza">Calculeaza</button>
+
+              <span id="result" class="mt-3 text-primary" 
+              style="visibility:hidden"
+              > Result</span>
+        </div>
+      </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
