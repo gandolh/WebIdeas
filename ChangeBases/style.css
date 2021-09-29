@@ -1,6 +1,6 @@
 body {
-  background: #e0e0e0;
-  color: #001f3f;
+  background: #2a2d2f;
+  color: #d4d0cb;
   font-family: Muli, sans-serif;
   height: 100vh;
   display: flex;
@@ -16,8 +16,8 @@ body {
 
 #mainOne {
   border-radius: 33px;
-  background: #e0e0e0;
-  box-shadow: 19px 19px 38px #969696, -19px -19px 38px #ffffff;
+  background: #2a2d2f;
+  box-shadow: rgb(83, 90, 94) 19px 19px 38px, rgb(24, 26, 27) -19px -19px 38px;
   width:500px;
   height:500px;
   position:absolute;
@@ -37,4 +37,9 @@ body {
 }
 .card-body{
     border:0 !important;
+}
+.form-control {
+	color: rgb(209, 205, 199);
+	background-color: rgb(24, 26, 27);
+	border-color: rgb(60, 65, 68);
 }
