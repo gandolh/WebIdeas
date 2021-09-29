@@ -14,7 +14,7 @@ var changeBase = ()=>{
         return ok.errorCode;
     
 
-    value= fromBaseToBase10(value,fromBase);
+    //value= fromBaseToBase10(value,fromBase);
     return FromBase10ToBase(value,toBase);
 }
 
@@ -23,7 +23,10 @@ var changeBase = ()=>{
 var FromBase10ToBase = (value,toBase)=>{
     let str="";
     while(value){
-        str+=value%toBase;
+        let digit = value%toBase;
+        if(digit>=10)
+            digit=String.fromCharCode("A".charCodeAt(0) + digit-10);
+        str+=digit;
         value=parseInt(value/toBase);
     }
     return str.split("").reverse().join("");
@@ -36,17 +39,6 @@ var FromBase10ToBase_recursive = (value,toBase)=>{
     else return '' 
 }
 
-var fromBaseToBase10= (value,fromBase)=>{
-    let p=1;
-    numberInBase10=0;
-    while(value){
-
-        numberInBase10+= value%10 * p;
-        p*=fromBase;
-        value= parseInt(value/10);
-    }
-    return numberInBase10;
-}
 
 
 var ValidCheck =(value,fromBase,toBase)=>{
@@ -56,7 +48,7 @@ var ValidCheck =(value,fromBase,toBase)=>{
         errorCode:"Campurile trebuie completate!"
     };
 
-    if(fromBase>=16 || toBase>=16)return {
+    if(fromBase>16 || toBase>16)return {
         succesfully:false,
         errorCode:"Baza de transformare este prea mare. Va rugam alegeti una mai scurta"
     };
@@ -81,5 +73,3 @@ var ValidCheck =(value,fromBase,toBase)=>{
     }
 }
 
-//baza 10-16 conversiile alea magnifice
-//erori pentru caractere in sir si daca sunt numere mai mari decat baza
