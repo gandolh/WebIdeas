@@ -1,5 +1,16 @@
 
 var FromBase10ToBaseReal = (value,toBase)=>{
+
+
+    return FromBase10ToBaseReal_Universal();
+
+
+   
+
+}
+
+
+var FromBase10ToBaseReal_Universal = (value,toBase)=>{
     let str="";
     while(value){
         let digit = value%toBase;
