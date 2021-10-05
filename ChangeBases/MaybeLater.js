@@ -10,3 +10,10 @@ var fromBaseToBase10= (value,fromBase)=>{
     }
     return numberInBase10;
 }
+
+//mai eleganta prima
+// var FromBase10ToBase_recursive = (value,toBase)=>{
+//     if(value)
+//         return  FromBase10ToBase_recursive(parseFloat(value/toBase),toBase)+''+(value%toBase) ;
+//     else return '' 
+// }
