@@ -1,11 +1,5 @@
-
 var FromBase10ToBaseReal = (value,toBase)=>{
-
-
-    return FromBase10ToBaseReal_Universal();
-
-
-   
+    return FromBase10ToBaseReal_Universal(value,toBase);
 
 }
 

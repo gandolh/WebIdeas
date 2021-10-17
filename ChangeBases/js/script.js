@@ -10,10 +10,8 @@ var changeBase = ()=>{
     let value = parseFloat(nrTransform_input.value);
 
 
-
     let realPart_value= parseInt(value);
     let fractionaryPart_value = value - realPart_value;
-
 
     let ok = ValidCheck(value,fromBase,toBase);
     if(!ok.succesfully)
@@ -36,4 +34,3 @@ var changeBase = ()=>{
         result= result + ',' + fractionaryPartTransformed;
     return result;
 }
-

@@ -35,4 +35,3 @@ var ValidCheck =(value,fromBase,toBase)=>{
         errorCode:"N-am"
     }
 }
-
