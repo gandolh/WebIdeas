@@ -116,8 +116,9 @@ const changeBaseFractionary_FBLOG = (value,fromBase,toBase,c)=>{ //fromBase^c = 
  }
 
  const ChangeBaseReal_FBLOGM1 = (value,fromBase,toBase,d)=>{ //toBase^d = fromBase 
-    let value= nrTransform_input.value
+    value= nrTransform_input.value
     value= value.split(".")[0]
+    value= parseInt(value)
     //ia for si itereaza prin cifre
     let solution_str='';
     while(value){
@@ -135,8 +136,19 @@ const changeBaseFractionary_FBLOG = (value,fromBase,toBase,c)=>{ //fromBase^c = 
  
  const changeBaseFractionary_FBLOGM1 = (value,fromBase,toBase,d)=>{ //toBase^d = fromBase 
      let solution_str="";
+     value= nrTransform_input.value
+     value= value.split(".")[1]
+    for(let i=0;i<value.length;i+=d){
+        let digit= parseInt(value[i]);
+        if(value[i]>='A')
+            digit= value[i]-'A'+10;   //nu stie sa faca 'A'- 'A'
+        for(let j=i;j<i+d;j++){
+            solution_str=  digit%toBase + solution_str;
+            digit= parseInt(digit/toBase);
+        }
+        // solution_str= ' ' + solution_str;
+    }
     
- 
      return solution_str;
   }
  
