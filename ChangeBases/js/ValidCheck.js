@@ -1,5 +1,5 @@
 var ValidCheck =(value,fromBase,toBase)=>{
-    if(isNaN(value ) || isNaN(value ) || isNaN(value ) )  
+    if(isNaN(value ) || isNaN(fromBase ) || isNaN(toBase ) )  
           return {
         succesfully:false,
         errorCode:"Campurile trebuie completate!"

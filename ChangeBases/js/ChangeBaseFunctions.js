@@ -11,14 +11,24 @@ var ChangeBaseReal = (value,fromBase,toBase)=>{
 
     //fromBase^c = toBase
     let c=Math.log(toBase) / Math.log(fromBase);
+
     if(c==parseInt(c))
-        solution_str=ChangeBaseReal_FBLOG(value,fromBase,toBase,c);
+        solution_str=ChangeBaseReal_FBLOG(value,fromBase,c);
 
     //toBase^d = fromBase    
     let d=  Math.round(100/c)/100
     if(d==parseInt(d))
-        solution_str=ChangeBaseReal_FBLOGM1(value,fromBase,toBase,d);
+        solution_str=ChangeBaseReal_FBLOGM1(toBase,d);
 
+    if(fromBase==8 && toBase==16){
+       let foo_sol= ChangeBaseReal_FBLOGM1(2,3);
+       solution_str = ChangeBaseReal_FBLOG(parseInt(foo_sol.split(" ").join("")),2,4)
+    }
+    if(fromBase==16 && toBase==8){
+        let foo_sol= ChangeBaseReal_FBLOGM1(2,4);
+        solution_str = ChangeBaseReal_FBLOG(parseInt(foo_sol.split(" ").join("")),2,3)
+    }
+    
     return solution_str;
 }
 
@@ -30,14 +40,25 @@ var changeBaseFractionary = (value,fromBase,toBase) =>{
 
     //fromBase^c = toBase
     let c=Math.log(toBase) / Math.log(fromBase);
-    if(c==parseInt(c))
-        solution_str=changeBaseFractionary_FBLOG(value,fromBase,toBase,c);
+    if(c==parseInt(c)){
+        value=nrTransform_input.value.split('.')[1]
+        solution_str=changeBaseFractionary_FBLOG(value,fromBase,c);
+    }
 
     //toBase^d = fromBase 
     let d=Math.log(fromBase) / Math.log(toBase); 
     if(d==parseInt(d))
-        solution_str=changeBaseFractionary_FBLOGM1(value,fromBase,toBase,d);
+        solution_str=changeBaseFractionary_FBLOGM1(toBase,d);
 
+    
+        if(fromBase==8 && toBase==16){
+            let foo_sol= changeBaseFractionary_FBLOGM1(2,3);
+            solution_str = changeBaseFractionary_FBLOG(parseInt(foo_sol.split(" ").join("")),2,4)
+         }
+         if(fromBase==16 && toBase==8){
+             let foo_sol= changeBaseFractionary_FBLOGM1(2,4);
+             solution_str = changeBaseFractionary_FBLOG(parseInt(foo_sol.split(" ").join("")),2,3)
+         }
 
     return solution_str;
 }
@@ -75,7 +96,7 @@ const changeBaseFractionary_FB10 = (value,toBase) =>{ //from base 10
 }
 
 
-const ChangeBaseReal_FBLOG = (value,fromBase,toBase,c)=>{ //fromBase^c = toBase
+const ChangeBaseReal_FBLOG = (value,fromBase,c)=>{ //fromBase^c = toBase
    
    let solution_str='';
     while(value){
@@ -94,59 +115,67 @@ const ChangeBaseReal_FBLOG = (value,fromBase,toBase,c)=>{ //fromBase^c = toBase
 }
 
 
-const changeBaseFractionary_FBLOG = (value,fromBase,toBase,c)=>{ //fromBase^c = toBase
+const changeBaseFractionary_FBLOG = (value,fromBase,c)=>{ //fromBase^c = toBase
     //fromBase^c = toBase
     let solution_str="";
-    while(value!=parseInt(value)){
-        value*=10;
-        pow= Math.pow(fromBase,c-1); 
+    if(value==undefined)return "";
+    initialValueLength= value.toString().length;
+    value=parseInt(value)
+    if(initialValueLength%c !=0)
+    value=value* Math.pow(10,c- initialValueLength%c )
+    while(value){
+        pow=1;
         let digit=0;
         for(let i=0;i<c;i++){
-            digit= digit + parseInt(value%10)*pow;
-            pow= parseInt(pow/fromBase);
-            value*=10;
+            digit= digit + (value%10)*pow;
+            pow*=fromBase;
+            value=parseInt(value/10);
         }
         if(digit>=10)
             digit=String.fromCharCode("A".charCodeAt(0) + digit-10);
-        solution_str= solution_str+digit;
-        value/=10;
+        solution_str=digit+ solution_str;
     }
 
     return solution_str;
+
  }
 
- const ChangeBaseReal_FBLOGM1 = (value,fromBase,toBase,d)=>{ //toBase^d = fromBase 
-    value= nrTransform_input.value
-    value= value.split(".")[0]
-    value= parseInt(value)
-    //ia for si itereaza prin cifre
+ const ChangeBaseReal_FBLOGM1 = (toBase,d)=>{ //toBase^d = fromBase 
     let solution_str='';
-    while(value){
-        let digit= value%10;
-        for(let i=0;i<d;i++){
-            solution_str= digit%toBase+ solution_str ;
+    let value= nrTransform_input.value
+    value= value.split(".")[0]
+    if(value==undefined)return "";
+    //ia for si itereaza prin cifre
+    for(let i=0;i<value.length;i++){
+        let digit= parseInt(value[i]);
+        if(value[i]>='A')
+        digit= value[i].charCodeAt(0)- 'A'.charCodeAt(0) + 10;   
+        let temp_str="";
+        for(let j=1;j<=d;j++){
+            temp_str=  digit%toBase + temp_str;
             digit= parseInt(digit/toBase);
         }
-        solution_str=" " +solution_str;
-        value= parseInt(value/10);
+       solution_str=solution_str +' '+temp_str;
     }
      return solution_str;
  }
  
  
- const changeBaseFractionary_FBLOGM1 = (value,fromBase,toBase,d)=>{ //toBase^d = fromBase 
+ const changeBaseFractionary_FBLOGM1 = (toBase,d)=>{ //toBase^d = fromBase 
      let solution_str="";
      value= nrTransform_input.value
      value= value.split(".")[1]
-    for(let i=0;i<value.length;i+=d){
+     if(value==undefined)return "";
+    for(let i=0;i<value.length;i++){
         let digit= parseInt(value[i]);
         if(value[i]>='A')
-            digit= value[i].charCodeAt(0)- 'A'.charCodeAt(0) + 10;   
-        for(let j=i;j<i+d;j++){
-            solution_str=  digit%toBase + solution_str;
+        digit= value[i].charCodeAt(0)- 'A'.charCodeAt(0) + 10;   
+        let temp_str="";
+        for(let j=1;j<=d;j++){
+            temp_str=  digit%toBase + temp_str;
             digit= parseInt(digit/toBase);
         }
-        // solution_str= ' ' + solution_str;
+       solution_str=solution_str+' '+ temp_str;
     }
     
      return solution_str;

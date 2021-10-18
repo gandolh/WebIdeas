@@ -8,7 +8,7 @@ var changeBase = ()=>{
     let fromBase= parseInt(fromBase_input.value)
     let toBase= parseInt(toBase_input.value);
     let value = parseFloat(nrTransform_input.value);
-
+    if(isNaN(value))value=0;
     //preia partea intreaga si fractionara.
     let realPart_value= parseInt(value);
     let fractionaryPart_value = getFractionaryPart( value);
@@ -44,6 +44,7 @@ var changeBase = ()=>{
 
 
 const getFractionaryPart =(value)=>{
+    if(isNaN(value))return 0;
     let real= parseInt(value)
     let p=1;
     while(value!=parseInt(value)){
@@ -51,7 +52,6 @@ const getFractionaryPart =(value)=>{
         real*=10;
         p*=10;
     }
-
     return (value-real)/p;
 
 
