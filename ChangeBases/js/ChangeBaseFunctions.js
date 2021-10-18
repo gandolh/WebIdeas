@@ -141,7 +141,7 @@ const changeBaseFractionary_FBLOG = (value,fromBase,toBase,c)=>{ //fromBase^c = 
     for(let i=0;i<value.length;i+=d){
         let digit= parseInt(value[i]);
         if(value[i]>='A')
-            digit= value[i]-'A'+10;   //nu stie sa faca 'A'- 'A'
+            digit= value[i].charCodeAt(0)- 'A'.charCodeAt(0) + 10;   
         for(let j=i;j<i+d;j++){
             solution_str=  digit%toBase + solution_str;
             digit= parseInt(digit/toBase);
