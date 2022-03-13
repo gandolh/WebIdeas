@@ -1,0 +1,55 @@
+html,body,h1,div{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #a1eafb;
+}
+nav{
+	background-color: rgba(8,105,114,1);
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 10px 0px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	gap: 50px;
+	z-index: 2;
+}
+
+nav a{
+	text-decoration: none;
+	color: white;
+	font-size: 25px;
+
+}
+
+section{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.card{
+	background-color:#49beb7;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 15px;
+	border-radius: 25px
+}
+.card h1{
+	color: #085f63;
+	margin: 15px;
+
+}
+.profile{
+	background:  url('../assets/horto.jpg') no-repeat center center;
+	background-size: contain;
+	width: 300px;
+	height: 300px;
+	border-radius: 100%;
+}

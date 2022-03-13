@@ -1,0 +1,40 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+.display h1,p {
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+
+}
+.display h1{
+	font-size:3.5em;
+}
+.display p{
+	font-size:1.75em;
+}
+
+.display {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+/*
+@media (max-width: 480px) {
+	.display h1{
+	font-size:30px;
+}
+.display p{
+	font-size:15px;
+}
+}
+@media (max-width: 320px) {	
+	.display h1{
+	font-size: 20px
+}
+.display p{
+	font-size: 10px;
+}
+}*/
