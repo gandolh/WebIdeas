@@ -1,0 +1,16 @@
+@media (max-width: 768px) {
+  .main {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .jobsMenu {
+    width: 100%;
+    height: 50%;
+  }
+  .thisWeekBtn {
+    width: 100%;
+  }
+  .form-inline {
+    width: 100%;
+  }
+}
