@@ -1,0 +1,173 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	background-color: #a1eafb
+}
+
+.calculatorBody {
+	background-color: #fff4e3;
+	width: 60vw;
+	height: 70vh;
+	border: 1px solid #cabbe9;
+}
+
+.calculusHistory {
+	width: 100%;
+	height: 60%;
+	border-bottom: 1px solid #cabbe9;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	overflow: hidden;
+}
+
+.inputBody {
+	display: flex;
+	width: 100%;
+	border-top: 1px solid #cabbe9;
+}
+
+.inputBody > input {
+	width: calc(70% - 10px);
+	padding: 5px;
+	border: 0;
+	font-size: 20px;
+	background-color: #ffcdab;
+}
+
+.inputBody > input:focus {
+	outline: none;
+}
+
+.result {
+	text-align: right;
+	width: calc(30% - 10px);
+	padding: 5px;
+	font-size: 20px;
+	background-color: #ffcdab;
+}
+
+.calculusButtons {
+	width: 100%;
+	height: 40%;
+	padding: 5px 0px;
+	display: flex;
+	flex-direction: column;
+	user-select: none;
+}
+
+.fa-exclamation-triangle {
+	color: #3d5af1;
+}
+
+.categories_row {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.categories {
+	display: flex;
+	justify-content: space-around;
+}
+
+.main_option{
+	display: grid;
+	grid-template-columns: repeat(3,1fr); 
+	height: calc(100% - 25px);
+	padding: 5px;
+	gap: 0px 15px;
+}
+.main_functions {
+	display: grid;
+	
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(4,1fr);
+}
+.main_option div {
+	text-align: center;
+}
+.numbers{
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	grid-template-rows: repeat(4,1fr);
+}
+
+
+.others{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+
+.duo{
+	display: flex;
+	justify-content: space-around;
+
+}
+
+.duo >div{
+	text-align: center;
+	width: 50%;
+}
+.others> div{
+	width: 100%;
+
+}
+
+.abc{
+	display: none;
+	height: 100%;
+	justify-content: space-around;
+	align-items: stretch ;
+	flex-wrap: wrap;
+}
+.abc >div{
+	width: 10%;
+	text-align: center;
+	margin-top: 5px;
+}
+.functions{
+	display: none;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+@media (max-aspect-ratio:1/2) {
+	.calculatorBody{
+		width: 100%;
+		position: absolute;
+		bottom: 0px;
+		font-size: 35px;
+	}
+	.calculusButtons{
+		height: 38%;
+	}
+	.inputBody >input{
+	font-size: 35px;
+	}
+	.result{
+		font-size: 35px;
+	}
+	.inputBody{
+			border-top: 5px solid #cabbe9;
+	}
+	.calculusHistory{
+		border-bottom: 5px solid #cabbe9;
+	}
+}
+
