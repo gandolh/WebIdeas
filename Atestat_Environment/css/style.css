@@ -1,0 +1,142 @@
+html,body,h1,div{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #a1eafb;
+}
+nav{
+	background-color: rgba(8,105,114,0.6);
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 10px 0px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	gap: 50px;
+	z-index: 2;
+}
+
+nav a{
+	text-decoration: none;
+	color: white;
+	font-size: 25px;
+
+}
+.banner{
+	width: 100%;
+	height: 300px;	
+	background:  url("../assets/environmental-banner.jpg") no-repeat center center;
+	background-size: cover;
+}
+
+.blackOverlay{
+	width: 100%;
+	height: 100%;
+	  background-color:#000;
+ 	 opacity:0.4;
+ 	 z-index: -1;
+
+}
+.titlu{
+color: #a7ff83;
+opacity: 1;
+position: absolute;
+top: calc(150px - 1em);
+left: 50%;
+transform: translateX(-50%);
+z-index: 2;
+}
+
+.container{
+	width: 100%;
+	height: 100%;
+}
+
+.section_spacing{
+	margin: 50px 60px 0px 60px;
+}
+.about_section{
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 25px;
+
+}
+
+.about_info{
+	background-color: #fdfdfd;
+	flex-shrink: 1;
+	padding: 10px;
+	border-radius: 25px;
+}
+.about_info h1{
+	color: #88bef5;
+	text-align: center;
+}
+.about_info p{
+	color: #364f6b;
+	font-size: 1.2rem;
+}
+.info_section{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	background-color: #1e6262;
+	padding: 20px;
+	border-radius: 10px;
+
+}
+.info_section_image1 {
+	background:  url('../assets/nature/Asset%204.svg') no-repeat center center;
+	background-size: contain;
+}
+.info_section p{
+	font-size: 1.2rem;
+	color:#ecfffb;
+}
+.info_section h1{
+	color: #cefff1;
+}
+
+
+footer{
+	margin-top: 50px;
+	width: 100%;
+	height: 20vh;
+	background-color: #107a8b;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	color: #a6fff2;
+}
+
+.info_section_image2 {
+	background:  url('../assets/nature/Asset%202.svg') no-repeat center center;
+	background-size: contain;
+}
+
+.gallery{
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	gap: 25px;
+	height:300px ;
+	border-radius: 25px;
+	background-color: #3d6cb9;
+}
+
+.info_section_image3{
+		background:  url('../assets/great_Outdoor/Black%20Couple%20Camping.png') no-repeat center center;
+	background-size: contain;
+}
+.info_section_image4{
+		background:  url('../assets/great_Outdoor/Black%20Couple%20Outdoors.png') no-repeat center center;
+	background-size: contain;
+}
+.info_section_image5{
+		background:  url('../assets/great_Outdoor/Black%20Couple%20RV%20Trip.png') no-repeat center center;
+	background-size: contain;
+}
+.info_section_image6{
+		background:  url('../assets/great_Outdoor/Black%20People%20Hiking.png') no-repeat center center;
+	background-size: contain;
+}
